@@ -20,6 +20,7 @@
     <PackageLicenseFile>LICENCE</PackageLicenseFile>
     <ApplicationIcon>OBSTimer.ico</ApplicationIcon>
     <Title>OBSTimer</Title>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
 
   <ItemGroup>

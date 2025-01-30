@@ -117,6 +117,7 @@ namespace OBSTimer {
             this.closeButton.TabStop = false;
             this.closeButton.Text = "✖";
             this.closeButton.UseVisualStyleBackColor = false;
+            this.closeButton.Click += closeButton_Click;
             // 
             // panel4
             // 

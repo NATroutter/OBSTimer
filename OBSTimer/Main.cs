@@ -19,13 +19,32 @@ namespace OBSTimer {
         public Main() {
             InitializeComponent();
 
+            //Get name
+            string name;
+            if (args.Length == 2) {
+                name = args[1];
+            } else {
+                Input input = new Input();
+                DialogResult result = input.ShowDialog();
+                if (result == DialogResult.OK) {
+                    name = input.content;
+                } else if (result == DialogResult.Abort) {
+                    Environment.Exit(0);
+                    return;
+                } else {
+                    MessageBox.Show("Invalid Name!", "OBSTimer | Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Environment.Exit(0);
+                    return;
+                }
+            }
+
             //Create System tray menu
             ContextMenuStrip menu = new ContextMenuStrip() {
                 Items = {
                     new ToolStripMenuItem("Show", null, (sender,args)=> ShowApp()),
                     new ToolStripMenuItem("Exit", null, (sender,args)=> {
                         if (trayIcon != null) trayIcon.Visible = false;
-                        Application.Exit();
+                        Environment.Exit(0);
                     })
                 }
             };
@@ -54,21 +73,6 @@ namespace OBSTimer {
             useLatestFile.Checked = settings.data.useLatestFile;
             useNamedFile.Checked = settings.data.useNamedFile;
             startHidden.Checked = settings.data.startHidden;
-
-            string name;
-
-            if (args.Length == 2) {
-                name = args[1];
-            } else {
-                Input input = new Input();
-                if (input.ShowDialog() == DialogResult.OK) {
-                    name = input.content;
-                } else {
-                    MessageBox.Show("Invalid Name!", "OBSTimer | Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Application.Exit();
-                    return;
-                }
-            }
 
             handler = new Handler(name);
             handler.DataChangedEvent += (sender, data) => {
