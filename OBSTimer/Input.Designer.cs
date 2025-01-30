@@ -1,4 +1,5 @@
-﻿namespace OBSTimer {
+﻿
+namespace OBSTimer {
     partial class Input {
         /// <summary>
         /// Required designer variable.
@@ -31,13 +32,15 @@
             this.panel2 = new Panel();
             this.closeButton = new Button();
             this.panel4 = new Panel();
-            this.nameInput = new CustomControls.RoundedTextBox();
-            this.okButton = new controls.RoundedButton();
+            this.panel5 = new Panel();
+            this.okButton = new Button();
+            this.nameInput = new TextBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)this.AppLogo).BeginInit();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -52,6 +55,7 @@
             this.panel1.Padding = new Padding(5);
             this.panel1.Size = new Size(362, 29);
             this.panel1.TabIndex = 7;
+            this.panel1.Paint += panel1_Paint;
             // 
             // panel3
             // 
@@ -116,59 +120,61 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.nameInput);
-            this.panel4.Controls.Add(this.okButton);
+            this.panel4.Controls.Add(this.panel5);
             this.panel4.Dock = DockStyle.Fill;
             this.panel4.Location = new Point(0, 29);
             this.panel4.Name = "panel4";
             this.panel4.Padding = new Padding(10);
-            this.panel4.Size = new Size(362, 60);
+            this.panel4.Size = new Size(362, 52);
             this.panel4.TabIndex = 10;
+            this.panel4.Paint += panel4_Paint;
             // 
-            // nameInput
+            // panel5
             // 
-            this.nameInput.BackgroundColor = Color.FromArgb(66, 69, 73);
-            this.nameInput.ButtonFont = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Pixel);
-            this.nameInput.ControlMargin = 10;
-            this.nameInput.Dock = DockStyle.Left;
-            this.nameInput.Location = new Point(10, 10);
-            this.nameInput.MaximumSize = new Size(1000, 39);
-            this.nameInput.MinimumSize = new Size(0, 39);
-            this.nameInput.Name = "nameInput";
-            this.nameInput.Padding = new Padding(10);
-            this.nameInput.Radius = 10;
-            this.nameInput.Size = new Size(259, 39);
-            this.nameInput.TabIndex = 1;
-            this.nameInput.TextCasing = CharacterCasing.Lower;
-            this.nameInput.TextColor = Color.FromArgb(242, 243, 245);
-            this.nameInput.TextContent = "";
+            this.panel5.Controls.Add(this.okButton);
+            this.panel5.Controls.Add(this.nameInput);
+            this.panel5.Location = new Point(12, 13);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new Size(337, 25);
+            this.panel5.TabIndex = 10;
             // 
             // okButton
             // 
-            this.okButton.ActiveColor = Color.FromArgb(115, 60, 60);
-            this.okButton.BackgroundColor = Color.FromArgb(218, 114, 114);
-            this.okButton.ButtonFont = new Font("Arial", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            this.okButton.ButtonText = "OK";
-            this.okButton.ControlMargin = 10;
+            this.okButton.BackColor = Color.FromArgb(218, 114, 114);
             this.okButton.Cursor = Cursors.Hand;
             this.okButton.Dock = DockStyle.Right;
-            this.okButton.HoverColor = Color.FromArgb(166, 86, 86);
-            this.okButton.Location = new Point(277, 10);
-            this.okButton.MaximumSize = new Size(1000, 50);
-            this.okButton.MinimumSize = new Size(0, 36);
+            this.okButton.FlatAppearance.BorderSize = 0;
+            this.okButton.FlatStyle = FlatStyle.Flat;
+            this.okButton.Font = new Font("Arial", 12F, FontStyle.Bold);
+            this.okButton.ForeColor = Color.FromArgb(242, 243, 245);
+            this.okButton.Location = new Point(270, 0);
+            this.okButton.Margin = new Padding(20);
             this.okButton.Name = "okButton";
-            this.okButton.Padding = new Padding(10);
-            this.okButton.Radius = 10;
-            this.okButton.Size = new Size(75, 40);
-            this.okButton.TabIndex = 0;
-            this.okButton.TextColor = Color.FromArgb(242, 243, 245);
+            this.okButton.Size = new Size(67, 25);
+            this.okButton.TabIndex = 9;
+            this.okButton.TabStop = false;
+            this.okButton.Text = "OK";
+            this.okButton.UseVisualStyleBackColor = false;
+            // 
+            // nameInput
+            // 
+            this.nameInput.BackColor = Color.FromArgb(66, 69, 73);
+            this.nameInput.BorderStyle = BorderStyle.None;
+            this.nameInput.CharacterCasing = CharacterCasing.Lower;
+            this.nameInput.Dock = DockStyle.Left;
+            this.nameInput.Font = new Font("Arial", 16F);
+            this.nameInput.ForeColor = Color.FromArgb(242, 243, 245);
+            this.nameInput.Location = new Point(0, 0);
+            this.nameInput.Name = "nameInput";
+            this.nameInput.Size = new Size(255, 25);
+            this.nameInput.TabIndex = 0;
             // 
             // Input
             // 
             this.AutoScaleDimensions = new SizeF(9F, 18F);
             this.AutoScaleMode = AutoScaleMode.Font;
             this.BackColor = Color.FromArgb(54, 57, 62);
-            this.ClientSize = new Size(362, 89);
+            this.ClientSize = new Size(362, 81);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel1);
             this.Font = new Font("Arial", 12F);
@@ -186,6 +192,8 @@
             ((System.ComponentModel.ISupportInitialize)this.AppLogo).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -197,7 +205,8 @@
         private PictureBox AppLogo;
         private Panel panel3;
         private Panel panel4;
-        private CustomControls.RoundedTextBox nameInput;
-        private controls.RoundedButton okButton;
+        private Button okButton;
+        private TextBox nameInput;
+        private Panel panel5;
     }
 }

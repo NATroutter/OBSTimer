@@ -13,7 +13,7 @@ namespace OBSTimer {
     public partial class Input : Form {
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public string content { get; private set; }
+        public string content { get; private set; } = "";
 
         public Input() {
             InitializeComponent();
@@ -23,8 +23,8 @@ namespace OBSTimer {
                 panel1,panel2,panel3,AppName,AppLogo
             });
 
-            okButton.ButtonClick += (sender) => {
-                content = nameInput.TextContent.Trim();
+            okButton.Click += (sender, e) => {
+                content = nameInput.Text.Trim();
                 if (!String.IsNullOrWhiteSpace(content)) {
                     this.DialogResult = DialogResult.OK;
                     Close();
@@ -32,12 +32,22 @@ namespace OBSTimer {
                     MessageBox.Show("Name can not be empty!", "OBSTimer | Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             };
-            nameInput.PressEnter += (sender) => {
-                okButton.PerformClick();
+            nameInput.KeyDown += (sender, e) => {
+                if (e.KeyCode == Keys.Enter) {
+                    okButton.PerformClick();
+                }
             };
-            nameInput.FocusText();
+            nameInput.Focus();
         }
 
-        private void Input_Load(object sender, EventArgs e) {}
+        private void Input_Load(object sender, EventArgs e) { }
+
+        private void panel4_Paint(object sender, PaintEventArgs e) {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e) {
+
+        }
     }
 }
